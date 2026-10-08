@@ -1,0 +1,37 @@
+package kz.iitu.spring_lab_01.aspect;
+
+import java.util.Arrays;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+@Order(2)
+public class LoggingAspect {
+
+    private static final Logger log = LoggerFactory.getLogger(LoggingAspect.class);
+
+    @Before("Pointcuts.serviceOperation()")
+    public void before(JoinPoint jp) {
+        log.info("[LOG] -> {} args={}", jp.getSignature().toShortString(), Arrays.toString(jp.getArgs()));
+    }
+
+    @AfterReturning(pointcut = "Pointcuts.serviceOperation()", returning = "result")
+    public void afterReturning(JoinPoint jp, Object result) {
+        log.info("[LOG] <- {} returned {}", jp.getSignature().toShortString(), result);
+    }
+
+    @AfterThrowing(pointcut = "Pointcuts.serviceOperation()", throwing = "ex")
+    public void afterThrowing(JoinPoint jp, Throwable ex) {
+        log.warn("[LOG] !! {} threw {}: {}", jp.getSignature().toShortString(),
+                ex.getClass().getSimpleName(), ex.getMessage());
+    }
+}
