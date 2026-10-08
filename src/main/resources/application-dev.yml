@@ -1,0 +1,12 @@
+server:
+  port: 8081
+app:
+  mail:
+    enabled: false
+    retry-count: 1
+  retry:
+    max-attempts: 2
+    backoff: 500ms
+logging:
+  level:
+    kz.iitu: DEBUG
