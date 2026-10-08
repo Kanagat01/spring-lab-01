@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: spring-lab-01
+
+server:
+  port: 8080
+
+app:
+  owner: Sharafiyev Kanagat
+  group: IT1SSO-2504
+  date-pattern: yyyy-MM-dd HH:mm:ss
+  mail:
+    from: no-reply@iitu.kz
+    retry-count: 3
+    timeout: 5s
+    enabled: true
+  retry:
+    max-attempts: 5
+    backoff: 2s
+
+logging:
+  level:
+    kz.iitu: INFO
+    web: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,env,configprops,conditions
+  endpoint:
+    env:
+      show-values: ALWAYS
+    configprops:
+      show-values: ALWAYS
