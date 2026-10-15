@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: #f4f4f4;
+}
+
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+th,
+td {
+  border: 1px solid #999999;
+  padding: 8px 14px;
+  text-align: left;
+}
+
+th {
+  background: #dddddd;
+}
+
+.flash {
+  padding: 10px;
+  background: #d8f0d8;
+  border: 1px solid #5a9a5a;
+}
+
+form input {
+  padding: 6px;
+  margin-right: 6px;
+}
