@@ -1,6 +1,15 @@
 spring:
   application:
     name: spring-lab-01
+  datasource:
+    url: jdbc:h2:file:./data/txlab
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    open-in-view: false
 
 server:
   port: 8080
@@ -20,8 +29,9 @@ app:
 
 logging:
   level:
-    kz.iitu: INFO
+    "[kz.iitu]": INFO
     web: INFO
+    "[org.springframework.orm.jpa.JpaTransactionManager]": DEBUG
 
 management:
   endpoints:
